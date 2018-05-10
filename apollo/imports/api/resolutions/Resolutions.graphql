@@ -1,0 +1,8 @@
+#[To do]
+#Nombre
+#createdDate
+
+type Resolution{
+  _id:String!
+  name:String!
+}
