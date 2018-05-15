@@ -3,7 +3,8 @@ import {makeExecutableSchema} from "graphql-tools";
 import {createApolloServer} from "meteor/apollo";
 import merge from 'lodash/merge';
 import ResolutionsResolvers from "../../api/resolutions/resolvers";
-
+//load schema
+//algo
 const testSchema= `
   type Query{
     hi:String

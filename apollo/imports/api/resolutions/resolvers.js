@@ -13,5 +13,14 @@ export default {
     resolutions(){
       return res;
     }
+  },
+
+  Mutation :{
+    createResolution(){
+      console.log("got here");
+      //const resolutionsId= Resolutions.insert({
+      //name: "test Res"
+    //});
+    }
   }
 };

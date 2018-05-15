@@ -6,3 +6,9 @@ type Resolution{
   _id:String!
   name:String!
 }
+
+type Mutation {
+    createResolution: Resolution
+}
+
+# ¿que es una mutacion?
