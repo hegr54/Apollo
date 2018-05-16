@@ -8,7 +8,7 @@ type Resolution{
 }
 
 type Mutation {
-    createResolution: Resolution
+    createResolution(name: String!): Resolution
 }
 
 # ¿que es una mutacion?

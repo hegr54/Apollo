@@ -16,8 +16,12 @@ export default {
   },
 
   Mutation :{
-    createResolution(){
-      console.log("got here");
+    createResolution(obj, {name}, context){
+      // console.log("got here");
+      const resolutionId=Resolutions.insert({  //insertar id
+        name
+      });
+      return Resolutions.findOne(resolutionsId);  //consultar
       //const resolutionsId= Resolutions.insert({
       //name: "test Res"
     //});

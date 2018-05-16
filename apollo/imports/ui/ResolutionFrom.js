@@ -3,8 +3,8 @@ import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
 
 const createResolution = gql`
-      mutation createResolution{
-        createResolution{
+      mutation createResolution($name: String!){
+        createResolution(name: $name){
           _id
         }
       }
@@ -13,8 +13,20 @@ const createResolution = gql`
 class ResolutionFrom extends Component{
 
     submitFrom = () =>{
-      console.log(this.name.value);
-      this.props.createResolution()
+      // console.log(this.name.value);
+      this.props.createResolution({
+        variables:{
+          name:this.name.value
+        }
+        })
+      // });
+      // //promesa
+      // .then(({data})=>{
+      //
+      // })
+      // .catch(error=>{
+      //   console.log(error);
+      // })
     };
 
     render(){
@@ -27,4 +39,9 @@ class ResolutionFrom extends Component{
     }
 }
 
-export default graphql(createResolution, {name: 'createResolution'})(ResolutionFrom)
+      export default graphql(createResolution, {
+                    name: 'createResolution',
+                                options:{
+                                    refectchQueries:["Resolutions"]
+                                  }
+                                  })(ResolutionFrom)
