@@ -1,14 +1,18 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
-import ResolutionFrom from './ResolutionFrom';
+import ResolutionForm from './ResolutionForm';
+import RegisterForm from './RegisterForm';
+import LoginForm from './LoginForm';
 
 const App =({data})=>{
   if(data.loading) return null;
   return(
   <div>
   <h1>{data.hi}</h1>
-  <ResolutionFrom/>
+  <RegisterForm/>
+  <LoginForm/>
+  <ResolutionForm/>
   <ul>
       {data.resolutions.map(resolution =>(
         <li key={resolution._id}>{resolution.name}</li>
