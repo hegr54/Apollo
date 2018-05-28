@@ -31,8 +31,8 @@ const testResolvers={//se usa en los rensorver
 
 const  resolvers=merge(testResolvers, ResolutionsResolvers)//concatenadado de un string
 
-console.log(resolvers);
-  const schema=makeExecutableSchema({
+// console.log(resolvers);
+const schema=makeExecutableSchema({
     typeDefs,
     resolvers
   });

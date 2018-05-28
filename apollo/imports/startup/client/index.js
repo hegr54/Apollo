@@ -1,8 +1,9 @@
 import React from "react";
-import {Meteor} from 'meteor/meteor';
+import {Meteor} from "meteor/meteor";
 import {render} from 'react-dom';
 //conecciones con el cliente
 import {ApolloProvider} from 'react-apollo';
+import {ApolloLink, from} from 'apollo-link';
 import {ApolloClient} from 'apollo-client';
 import {HttpLink} from 'apollo-link-http';
 import {InMemoryCache} from 'apollo-cache-inmemory';
@@ -12,12 +13,22 @@ import App from "../../ui/App";
 const httplink = new HttpLink({  //generamos una liga con meteor con apollo
   uri:Meteor.absoluteUrl("graphql")
 });
+
+const authLink = new ApolloLink((operation, forward)=>{
+  const token = Accounts._storedLoginToken();
+  operation.setContext(()=>({
+    headers:{
+      "meteor-login-token":token,
+    }
+  }));
+  return forward(operation);
+});
 //CREACION DEL OBJETO TEMPORAL
 //VARIABLE PARA GENERAR EN MEMORIA
 const cache = new InMemoryCache();
 //fuencion que resive un objeto que resive el parametero link
 const client = new ApolloClient({
-  link:httplink,
+  link: from([authLink, httplink]),
   cache
 });
 //funcion anomima

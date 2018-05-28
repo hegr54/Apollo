@@ -19,14 +19,9 @@ class ResolutionFrom extends Component{
           name:this.name.value
         }
         })
-      // });
-      // //promesa
-      // .then(({data})=>{
-      //
-      // })
-      // .catch(error=>{
-      //   console.log(error);
-      // })
+      .catch(error=>{
+        console.log(error);
+      });
     };
 
     render(){
@@ -35,13 +30,13 @@ class ResolutionFrom extends Component{
             <input type="text" ref={input => (this.name =input)}/>
             <button onClick={this.submitFrom}>submit</button>
         </div>
-      )
+      );
     }
 }
 
       export default graphql(createResolution, {
                     name: 'createResolution',
-                                options:{
-                                    refectchQueries:["Resolutions"]
-                                  }
-                                  })(ResolutionFrom)
+                    options:{
+                      refectchQueries:["Resolutions"]
+                    }
+                  })(ResolutionFrom);
